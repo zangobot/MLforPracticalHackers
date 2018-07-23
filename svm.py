@@ -33,8 +33,12 @@ grid_gauss = {
     'C'         : np.logspace(-2,2,10),
     'kernel'    : ['rbf'],
     'gamma'     : np.logspace(-1,1,10),
-
 }
+
+#Remember that gamma is 1 / (2*sigma^2) (for Gaussian Kernel, or so called RBF, which stands for radial basis function)
+#For poly kernel, gamma is constant multiplier (I always put it to 1), but it's coef0 which tunes the exponent!
+#Find more here... http://scikit-learn.org/stable/modules/svm.html#svm-kernels
+
 clf_gauss = GridSearchCV(SVC(), param_grid=grid_gauss, cv=10)
 clf_gauss.fit(X_train, y_train)
 gauss_error = 100 * np.sum(clf_gauss.best_estimator_.predict(X_test) != y_test) / len(y_test)
