@@ -35,4 +35,4 @@ def read_titanic_dataset(path, has_labels=True):
 
 def read_titanic_test_labels():
     labels = pd.read_csv('Challenge/Titanic/gender_submission.csv')
-    return labels.as_matrix().ravel()
+    return labels.as_matrix()[:,1].ravel()
