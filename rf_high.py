@@ -18,11 +18,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
 
 #Why those values for gamma? I performed a search and then redefined the range for the parameter. 
 grid_gauss = {
-    'C'         : np.logspace(-2,2,10),
+    'C'         : np.logspace(-2,2,5),
     'kernel'    : ['rbf'],
     'gamma'     : np.logspace(-3,-2,10),
 }
-clf_gauss = GridSearchCV(SVC(), param_grid=grid_gauss, cv=10)
+clf_gauss = GridSearchCV(SVC(), param_grid=grid_gauss, cv=5)
 clf_gauss.fit(X_train, y_train)
 print('Best parameters: {}'.format(clf_gauss.best_params_))
 gauss_error = 100 * np.sum(clf_gauss.best_estimator_.predict(X_test) != y_test) / len(y_test)

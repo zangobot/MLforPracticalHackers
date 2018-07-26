@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 
 X,Y = make_moons(n_samples=600, noise=0.15)
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
+plt.scatter(X[:,0],X[:,1],c=Y)
 plt.show()
 
 model = keras.Sequential(
