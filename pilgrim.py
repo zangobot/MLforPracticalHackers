@@ -26,13 +26,12 @@ print(y_pred, Y)
 response = ''.join( [chr(int(256*a)) for a in y_pred.ravel()] )
 print('Response is ... ', response)
 
-layer = model.layers[0].get_weights()[0]
-biases = model.layers[0].get_weights()[1]
-print(layer,biases)
 
 print("IT'S MORE EASY THAN TATH!")
-
+print("Just put to 0 everythng, invert ouput function and assign only bias term.")
 bias = [ np.log(i /(1-i)) for i in y ]
+#bias = [-0.41197978912935806, -0.31508104663989539, -0.49419322371684876, -0.39570893316279959]
+
 print(bias)
 conn = process('Challenge/Pilgrim/NNawkward_pilgrim')
 conn.sendline('1')
@@ -49,4 +48,3 @@ for i in range(4):
 conn.sendline('2')
 conn.interactive()
 
-#[-0.41197978912935806, -0.31508104663989539, -0.49419322371684876, -0.39570893316279959]
